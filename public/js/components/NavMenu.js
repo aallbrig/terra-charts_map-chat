@@ -28,7 +28,7 @@ var NavMenu = React.createClass({
               </ListGroupItem>
             </ListGroup>
           </div> : ''}
-        <div className={(showMenu)?'menu menu_navbar_show-menu_state':(showUserMenu)?'menu menu_navbar_show-user-menu_state':'menu'}>
+        <div className={(showMenu)?'menu menu_navbar_show-menu_state':'menu'}>
           <Col xs={12}>
             <div className="pull-left">
               <Button bsStyle="primary" onClick={this.toggleShowMenu}>

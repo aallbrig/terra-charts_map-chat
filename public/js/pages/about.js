@@ -1,4 +1,4 @@
 var AboutPage = function() {
-  alert('about!');
+  console.log('about!');
   return {};
 };

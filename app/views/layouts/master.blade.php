@@ -26,15 +26,22 @@
     <!--<script type="text/jsx" src="js/models/User.js"></script>-->
     <!-- Mixins -->
     <!-- Components -->
+    <script type="text/jsx" src="js/components/NavMenu.js"></script>
     @yield('styles')
 
     <title>Terra Charts Map Chat</title>
   </head>
   <body>
     <div class="app-content container">
-      <h3>Terra Charts Map Chats</h3>
+      <div class="row">
+        <div id="top-menu"></div>
+      </div>
       @yield('content')
     </div>
+    <script type="text/jsx">
+      /** @jsx React.DOM */
+      var nav = React.render(<NavMenu/>, document.getElementById('top-menu'));
+    </script>
     @yield('scripts')
   </body>
 </html>

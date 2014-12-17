@@ -2,25 +2,19 @@
 
 class ApplicationController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /application
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return "Application";
+	protected $layout = 'layouts.master';
+	// Pages
+	public function index() {
+		return $this->layout->nest('content', 'application.pages.index');
 	}
-
-	public function about()
-	{
-		return "about";
+	public function about() {
+		return $this->layout->nest('content', 'application.pages.about');
 	}
-
-	public function instructions()
-	{
-		return "instructions";
+	public function instructions() {
+		return $this->layout->nest('content', 'application.pages.instructions');
 	}
-
+	// Interactions
+	public function postMessage() {
+		return "post message";
+	}
 }

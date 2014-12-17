@@ -11,5 +11,11 @@
 @stop
 
 @section('scripts')
-
+{{ HTML::script('js/pages/about.js'); }}
+<script type="text/javascript">
+$(function(){
+  var page = new AboutPage();
+  console.log(page);
+});
+</script>
 @stop

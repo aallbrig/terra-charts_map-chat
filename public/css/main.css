@@ -1,0 +1,12 @@
+.app-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f1f0ff;
+  overflow: hidden;
+}
+#map-canvas {
+  height: 90%;
+}

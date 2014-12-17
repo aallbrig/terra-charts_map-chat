@@ -1,0 +1,35 @@
+{
+  "name": "Terra Charts Map Chat",
+  "version": "0.0.0",
+  "description": "Terra charts sharable maps application.",
+  "main": "index.php",
+  "keywords": [
+    "Maps"
+  ],
+  "authors": [
+    "Andrew Allbright"
+  ],
+  "license": "No",
+  "homepage": "AndrewAllbright.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fontawesome": "~4.2.0",
+    "bootstrap": "~3.3.0",
+    "jquery-ui-map": "~3.0.0"
+  },
+  "devDependencies": {
+    "backbone": "~1.1.2",
+    "react": "~0.12.1",
+    "react-bootstrap": "~0.13.0",
+    "es6-shim": "~0.20.3",
+    "requirejs": "~2.1.15"
+  }
+}

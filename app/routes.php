@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'ApplicationController@index');
+Route::get('/about', 'ApplicationController@about');
+Route::get('/instructions', 'ApplicationController@instructions');

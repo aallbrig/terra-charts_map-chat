@@ -20,9 +20,45 @@
 <script  type="text/jsx">
 /** @jsx React.DOM */
 $(function(){
-  var mockData = [{message:"test"},{message:"test test test test test test test test test test test test test test test"},{message:"test"}]
+  var mockMessages = [{message:"test"},{message:"test test test test test test test test test test test test test test test"},{message:"test"}]
   var data = {};
-  var chatModal = React.render(<ChatModal messages={mockData}/>, document.getElementById('chatModal'));
+  var radius = 160934;
+  data.chatCircles = [{title:'Ellesmere Island',
+                       lat: 81.430858,
+                       lng: -84.403959,
+                       radius: radius,
+                       messages: mockMessages},
+                      {title:'Canada',
+                       lat: 52.122217,
+                       lng: -64.452787,
+                       radius: radius,
+                       messages: mockMessages},
+                      {title:'Baker County, Florida',
+                       lat: 31.346599, 
+                       lng: -84.598730,
+                       radius: radius,
+                       messages: mockMessages},
+                      {title:'Venezuela',
+                       lat: 4.469640,
+                       lng: -62.274510,
+                       radius: radius,
+                       messages: mockMessages},
+                      {title:'Brazil',
+                       lat: -24.933767,
+                       lng: -49.969823,
+                       radius: radius,
+                       messages: mockMessages},
+                      {title:'Argentina',
+                       lat: -40.653556,
+                       lng: -65.438572,
+                       radius: radius,
+                       messages: mockMessages},
+                      {title:'Antarctica',
+                       lat: -74.475108,
+                       lng: -67.547947,
+                       radius: radius,
+                       messages: mockMessages}];
+  var chatModal = React.render(<ChatModal messages={mockMessages}/>, document.getElementById('chatModal'));
   var page = new IndexPage('#map-canvas', data, chatModal);
 });
 </script>

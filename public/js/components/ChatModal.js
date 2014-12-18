@@ -22,7 +22,7 @@ var ChatModal = React.createClass({
     console.log(this.refs.messageInput.getValue());
     var value = this.refs.messageInput.getValue();
     if(value) {
-
+      // Send an AJAX call to applicationctrl@addMessage
     } else {
       alert('Please input a message!');
     }

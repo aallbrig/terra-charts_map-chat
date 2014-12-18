@@ -4,7 +4,7 @@ var NavMenu = React.createClass({
   getInitialState: function(){
     return {
       showMenu: false
-    }
+    };
   },
   toggleShowMenu: function(){
     this.setState({showMenu: !this.state.showMenu,

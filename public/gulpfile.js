@@ -14,7 +14,7 @@ gulp.task('js', function () {
       .pipe(livereload());
 });
 gulp.task('less', function() {
-    return gulp.src('./less/*.less')
+    return gulp.src(['./less/*.less','./less/pages/*.less'])
         .pipe(plumber())
         .pipe(less({
           paths: ['./', './overrides/', '!./bower/**']

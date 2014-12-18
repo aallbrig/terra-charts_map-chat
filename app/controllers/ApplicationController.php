@@ -5,13 +5,11 @@ class ApplicationController extends \BaseController {
 	protected $layout = 'layouts.master';
 	// Pages
 	public function index() {
-		return "success";
-		// return ChatCircle::all();
-		// foreach ($chatCircles as $chatCircle) {
-		// 	$chatCircle->messages;
-		// }
-		// return $chatCircles;
-		// return $this->layout->nest('content', 'application.pages.index');
+		$chatCircles = ChatCircle::all();
+		foreach ($chatCircles as $chatCircle) {
+			$chatCircle->messages;
+		}
+		return $this->layout->nest('content', 'application.pages.index', ['data'=>$chatCircles]);
 	}
 	public function about() {
 		return $this->layout->nest('content', 'application.pages.about');
@@ -21,6 +19,12 @@ class ApplicationController extends \BaseController {
 	}
 	// Interactions
 	public function postMessage() {
-		return "post message";
+		$chatCircleId = Input::get('chatCircleId');
+		$messageInput = Input::get('message');
+		$chatCircle = ChatCircle::findOrFail($chatCircleId);
+		$message = new Message();
+		$message->message = $messageInput;
+		$chatCircle->messages()->save($message);
+		return $message;
 	}
 }

@@ -4,7 +4,7 @@
 .chat-modal .modal-header {
   color: white;
   background-color: #443266;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 4px 4px 0px 0px;
   background-clip: padding-box;
 }
 .chat-modal_body {

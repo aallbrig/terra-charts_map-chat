@@ -9,12 +9,20 @@ var ChatModal = React.createClass({
   getDefaultProps: function () {
     return {
       messages: [],
-      chatCircleId: null
+      chatCircleId: null,
+      successFn: function(){},
+      failFn: function(){}
     };
   },
-  show: function (chatCircleId) {
+  show: function (chatCircleId, successFn, failFn) {
     console.log(chatCircleId);
-    this.setProps({chatCircleId: chatCircleId})
+    this.setProps({chatCircleId: chatCircleId});
+    if(successFn){
+      this.setProps({successFn:successFn});
+    }
+    if(failFn){
+      this.setProps({failFn:failFn});
+    }
     this.setState({show: true});
   },
   hide: function () {
@@ -27,10 +35,11 @@ var ChatModal = React.createClass({
     if(value) {
       var data = {chatCircleId:_this.props.chatCircleId,
                   message: value};
-      console.log(data);
       $.post(app.config.rootUrl + 'postMessage', data, function (data) {
+        _this.props.successFn(data);
         _this.hide();
-      }).fail(function(){
+      }).fail(function(data){
+        _this.props.failFn(data);
         alert('Failure!  Please try to submit your message again.');
       });
     } else {

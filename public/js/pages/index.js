@@ -26,7 +26,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
       _player;
 
   // Add chat regions for each chat region
-  _data.chatCircles.map(function(chatCircle){
+  _data.map(function(chatCircle){
     // Create marker
     var marker = new google.maps.Marker({
       map: _map,
@@ -63,7 +63,9 @@ var IndexPage = function(mapTarget, data, chatModal) {
     _chatRegions.forEach(function(chatCircle){
       if(chatCircle.circle.contains(e.latLng)){
         chatModal.updateMessages(chatCircle.messages);
-        chatModal.show(chatCircle.chatCircleId);
+        chatModal.show(chatCircle.chatCircleId, function(message){
+          chatCircle.messages.push(message);
+        });
       }
     });
     _player.setAnimation(google.maps.Animation.BOUNCE);

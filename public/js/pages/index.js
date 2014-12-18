@@ -31,7 +31,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
     var marker = new google.maps.Marker({
       map: _map,
       position: new google.maps.LatLng(chatCircle.lat, chatCircle.lng),
-      icon: '/images/chat.png',
+      icon: app.config.rootUrl + 'images/chat.png',
       animation: google.maps.Animation.DROP
     });
     // Add circle overlay and bind to marker
@@ -49,7 +49,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
   _player = new google.maps.Marker({
     map: _map,
     position: new google.maps.LatLng(39.768434, -86.162905),  // Indianapolis
-    icon: '/images/player.png',
+    icon: app.config.rootUrl + 'images/player.png',
     animation: google.maps.Animation.BOUNCE,
     draggable: true
   });

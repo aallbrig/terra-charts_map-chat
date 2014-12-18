@@ -18,13 +18,13 @@ var NavMenu = React.createClass({
           <div className="menu_menu-items">
             <ListGroup>
               <ListGroupItem>
-                <a href="/">Application</a>
+                <a href={app.config.rootUrl + ""}>Application</a>
               </ListGroupItem>
               <ListGroupItem>
-                <a href="/instructions">Instructions</a>
+                <a href={app.config.rootUrl + "instructions"}>Instructions</a>
               </ListGroupItem>
               <ListGroupItem>
-                <a href="/about">About</a>
+                <a href={app.config.rootUrl + "about"}>About</a>
               </ListGroupItem>
             </ListGroup>
           </div> : ''}

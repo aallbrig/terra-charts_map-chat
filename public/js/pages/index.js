@@ -38,7 +38,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
     // http://www.colorcombos.com/color-schemes/17/ColorCombo17.html
     var circle = new google.maps.Circle({
       map: _map,
-      radius: chatCircle.radius,
+      radius: parseFloat(chatCircle.radius),
       fillColor: '#333399',  // Medium Blue
       strokeColor: '#3366CC' // Dark Blue
     });

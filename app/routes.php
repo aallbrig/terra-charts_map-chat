@@ -12,5 +12,9 @@
 */
 
 Route::get('/', 'ApplicationController@index');
+// Route::get('/', function(){
+//   return 'success';
+// });
 Route::get('/about', 'ApplicationController@about');
 Route::get('/instructions', 'ApplicationController@instructions');
+Route::post('/postMessage', 'ApplicationController@postMessage');

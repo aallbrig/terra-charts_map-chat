@@ -5,7 +5,13 @@ class ApplicationController extends \BaseController {
 	protected $layout = 'layouts.master';
 	// Pages
 	public function index() {
-		return $this->layout->nest('content', 'application.pages.index');
+		return "success";
+		// return ChatCircle::all();
+		// foreach ($chatCircles as $chatCircle) {
+		// 	$chatCircle->messages;
+		// }
+		// return $chatCircles;
+		// return $this->layout->nest('content', 'application.pages.index');
 	}
 	public function about() {
 		return $this->layout->nest('content', 'application.pages.about');

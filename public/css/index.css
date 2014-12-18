@@ -1,6 +1,15 @@
+.chat-modal .close {
+  color: white;
+}
+.chat-modal .modal-header {
+  color: white;
+  background-color: #443266;
+  border-radius: 5px 5px 0px 0px;
+  background-clip: padding-box;
+}
 .chat-modal_body {
   height: 55%;
-  padding: 20px;
+  padding: 0px 20px;
   overflow-y: scroll;
 }
 .chat-modal_body [class*="col-"] {
@@ -10,6 +19,16 @@
 .chat-modal_body .messenger {
   color: purple;
   font-weight: 800;
+}
+.chat-modal_footer {
+  padding: 10px 5px 0px 5px;
+}
+.chat-modal_footer .help-block {
+  margin-top: 0px;
+}
+.chat-modal_footer .btn {
+  background-color: #443266;
+  border-color: #c3c3e5;
 }
 #map-canvas {
   height: 80%;

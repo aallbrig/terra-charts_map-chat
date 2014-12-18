@@ -8,7 +8,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
   var _mapTarget = $(mapTarget),
       _data = data,
       _mapOptions = {
-        zoom: 2,
+        zoom: 4,
         center: new google.maps.LatLng(39.768183, -86.158210),
         disableDefaultUI: false,
         panControl: true,
@@ -24,13 +24,10 @@ var IndexPage = function(mapTarget, data, chatModal) {
       _chatModal = chatModal,
       _chatRegions = [],
       _player;
-  // Hide modal
-  chatModal.hide();
-  // chatModal.updateMessages(mockData);
 
   // Add chat regions for each chat region
   _data.chatCircles.map(function(chatCircle){
-    // Create marker 
+    // Create marker
     var marker = new google.maps.Marker({
       map: _map,
       position: new google.maps.LatLng(chatCircle.lat, chatCircle.lng),
@@ -38,17 +35,17 @@ var IndexPage = function(mapTarget, data, chatModal) {
       animation: google.maps.Animation.DROP
     });
     // Add circle overlay and bind to marker
+    // http://www.colorcombos.com/color-schemes/17/ColorCombo17.html
     var circle = new google.maps.Circle({
       map: _map,
-      radius: chatCircle.radius,    // 10 miles in metres
-      fillColor: '#333399',
-      strokeColor: '#3366CC'
+      radius: chatCircle.radius,
+      fillColor: '#333399',  // Medium Blue
+      strokeColor: '#3366CC' // Dark Blue
     });
     circle.bindTo('center', marker, 'position');
-    _chatRegions.push({marker:marker,circle:circle, messages:chatCircle.messages});
+    _chatRegions.push({chatCircleId:chatCircle.id, marker:marker,circle:circle,messages:chatCircle.messages});
   });
-  // Add player marker
-  // Instantiate player at Indianapolis (39.768183, -86.158210)
+  // Instantiate player at Indianapolis (39.768183, -86.158210) (because, you know, that's my city :)
   _player = new google.maps.Marker({
     map: _map,
     position: new google.maps.LatLng(39.768434, -86.162905),  // Indianapolis
@@ -56,13 +53,19 @@ var IndexPage = function(mapTarget, data, chatModal) {
     animation: google.maps.Animation.BOUNCE,
     draggable: true
   });
+  // Player event listeners!
+  // Stop bouncing on drag start
+  google.maps.event.addListener(_player,'dragstart',function() {
+    _player.setAnimation(null);
+  });
   // Add dragend event listener
   google.maps.event.addListener(_player,'dragend',function(e) {
     _chatRegions.forEach(function(chatCircle){
       if(chatCircle.circle.contains(e.latLng)){
         chatModal.updateMessages(chatCircle.messages);
-        chatModal.show();
+        chatModal.show(chatCircle.chatCircleId);
       }
     });
+    _player.setAnimation(google.maps.Animation.BOUNCE);
   });
 };

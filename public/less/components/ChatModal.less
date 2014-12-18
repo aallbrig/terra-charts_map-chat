@@ -1,9 +1,18 @@
+@import '../variables';
+
 .chat-modal {
-  .modal-header {}
+  .close {
+    color: white;
+  }
+  .modal-header {
+    color: white;
+    background-color: @dark-purple;
+    .border-radius(5px 5px 0px 0px)
+  }
 }
 .chat-modal_body {
   height: 55%;
-  padding: 20px;
+  padding: 0px 20px;
   overflow-y: scroll;
   [class*="col-"] {
     margin: 0;
@@ -14,4 +23,13 @@
     font-weight: 800;
   }
 }
-.chat-modal_footer {}
+.chat-modal_footer {
+  padding: 10px 5px 0px 5px;
+  .help-block {
+    margin-top: 0px;
+  }
+  .btn {
+    background-color: @dark-purple;
+    border-color: @light-purple;
+  }
+}

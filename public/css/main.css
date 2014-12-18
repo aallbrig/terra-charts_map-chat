@@ -6,6 +6,8 @@
 }
 .menu .btn {
   height: 30px;
+  background-color: #8c489f;
+  border-color: #c3c3e5;
 }
 .menu h3 {
   margin-top: 0px;

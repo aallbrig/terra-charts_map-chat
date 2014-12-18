@@ -8,10 +8,13 @@ var ChatModal = React.createClass({
   },
   getDefaultProps: function () {
     return {
-      messages: []
+      messages: [],
+      chatCircleId: null
     };
   },
-  show: function () {
+  show: function (chatCircleId) {
+    console.log(chatCircleId);
+    this.setProps({chatCircleId: chatCircleId})
     this.setState({show: true});
   },
   hide: function () {
@@ -19,10 +22,17 @@ var ChatModal = React.createClass({
   },
   addMessage: function (e) {
     console.log('adding message!');
-    console.log(this.refs.messageInput.getValue());
+    var _this = this;
     var value = this.refs.messageInput.getValue();
     if(value) {
-      // Send an AJAX call to applicationctrl@addMessage
+      var data = {chatCircleId:_this.props.chatCircleId,
+                  message: value};
+      console.log(data);
+      $.post(app.config.rootUrl + 'postMessage', data, function (data) {
+        _this.hide();
+      }).fail(function(){
+        alert('Failure!  Please try to submit your message again.');
+      });
     } else {
       alert('Please input a message!');
     }
@@ -34,7 +44,7 @@ var ChatModal = React.createClass({
     return (
       <div>
         {(this.state.show)?
-          <Modal className="chat-modal" title="Chat Modal" animation={true} onRequestHide={this.hide}>
+          <Modal className="chat-modal" title="Leave a Message Here!" animation={true} onRequestHide={this.hide}>
             <div className="chat-modal_body modal-body">
               {this.props.messages.map(function (message) {
                 return (<Row>

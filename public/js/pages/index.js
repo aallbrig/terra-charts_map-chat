@@ -43,7 +43,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
       strokeColor: '#3366CC' // Dark Blue
     });
     circle.bindTo('center', marker, 'position');
-    _chatRegions.push({chatCircleId:chatCircle.id, marker:marker,circle:circle,messages:chatCircle.messages});
+    _chatRegions.push({chatCircleId:chatCircle.id, title:chatCircle.title, marker:marker,circle:circle,messages:chatCircle.messages});
   });
   // Instantiate player at Indianapolis (39.768183, -86.158210) (because, you know, that's my city :)
   _player = new google.maps.Marker({
@@ -63,7 +63,7 @@ var IndexPage = function(mapTarget, data, chatModal) {
     _chatRegions.forEach(function(chatCircle){
       if(chatCircle.circle.contains(e.latLng)){
         chatModal.updateMessages(chatCircle.messages);
-        chatModal.show(chatCircle.chatCircleId, function(message){
+        chatModal.show(chatCircle.chatCircleId, chatCircle.title, function(message){
           chatCircle.messages.push(message);
         });
       }

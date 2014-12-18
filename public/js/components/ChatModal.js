@@ -10,13 +10,14 @@ var ChatModal = React.createClass({
     return {
       messages: [],
       chatCircleId: null,
+      chatCircleTitle: null,
       successFn: function(){},
       failFn: function(){}
     };
   },
-  show: function (chatCircleId, successFn, failFn) {
-    console.log(chatCircleId);
-    this.setProps({chatCircleId: chatCircleId});
+  show: function (chatCircleId, title, successFn, failFn) {
+    this.setProps({chatCircleId: chatCircleId,
+                   chatCircleTitle: title});
     if(successFn){
       this.setProps({successFn:successFn});
     }
@@ -29,7 +30,6 @@ var ChatModal = React.createClass({
     this.setState({show: false});
   },
   addMessage: function (e) {
-    console.log('adding message!');
     var _this = this;
     var value = this.refs.messageInput.getValue();
     if(value) {
@@ -53,7 +53,7 @@ var ChatModal = React.createClass({
     return (
       <div>
         {(this.state.show)?
-          <Modal className="chat-modal" title="Leave a Message Here!" animation={true} onRequestHide={this.hide}>
+          <Modal className="chat-modal" title={this.props.chatCircleTitle} animation={true} onRequestHide={this.hide}>
             <div className="chat-modal_body modal-body">
               {this.props.messages.map(function (message) {
                 return (<Row>
@@ -61,6 +61,7 @@ var ChatModal = React.createClass({
                           <Col xs={9} className="message">{message.message}</Col>
                         </Row>);
               })}
+              {(this.props.messages.length == 0)?'There are no messages here!  Why don\'t you leave one?':''}
             </div>
             <div className="chat-modal_footer modal-footer">
               <Row>
